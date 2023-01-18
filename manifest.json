@@ -1,0 +1,32 @@
+// Make sure you have "manifest" file installed too as specified here: http://crxdoc-zh.appspot.com/apps/manifest 
+// "FacebookMarketplaceChromeExtension" is our main namespace where all our functions live under  
+
+var FacebookMarketplaceChromeExtension = {};
+
+// Run certain event when document has finished loading  
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+      // Initialize Variables  
+
+      var element; // Store DOM element upon triggering an event  
+
+      var threshold; // Price threshold as set by user  
+
+      // Logic to compare prices of item listed against competing sources and get reported back to user quickly 
+
+      element = document.querySelector('div'); // Use querySelector() to grab divs with data of each listing visible in FB marketplace  
+
+      threshold = parseFloat(element); // Parse price against selected element using parseFloat() function     
+
+      if (threshold <= 10) { // Compare price against set threshold (in this case 10 USD)  
+
+        console.log('This is an excellent purchase choice! Rating "10".'); // Log results if true 
+
+      } else if (threshold >= 5 && threshold < 10) { // Verify between "5" & "10" USD range  
+
+        console.log('This looks like an OK purchase choice! Rating between "5 - 8".'); // Log results if true 
+
+      } else { // Everything else fits into 3rd category i.e less than 5 USD mark or beyond 10 USD mark    
+
+        console.log('Not recommended! Rating below "5".'); // Log results if true    }    });
